@@ -50,7 +50,3 @@ switch(num){
     }
 
 
-
-while (condition) {
-    
-}
