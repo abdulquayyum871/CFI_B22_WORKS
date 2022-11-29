@@ -51,3 +51,6 @@ switch(num){
 
 
 
+while (condition) {
+    
+}
