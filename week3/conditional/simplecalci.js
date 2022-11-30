@@ -13,7 +13,7 @@ console.log(`\t Press - for addition`);
 console.log(`\t Press % for addition`);
 console.log(`\t Press ** for addition`);
 console.log(`\t Press / for addition`);
-console.log(`\t Press ^ for addition`);
+console.log(`\t Press * for addition`);
 
 var symbol = readlineSync.question("Enter the symbol you require:");
 
