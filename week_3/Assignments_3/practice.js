@@ -18,20 +18,22 @@ console.log('Press 4 for circle');
 console.log('..........................');
 
 var num = readlineSync.question('enter the no you require:');
+var str = " unit\u00b2"
 
 switch(num){
     case '1':
         console.log("SQUARE");
         var a = readlineSync.questionInt('Enter your length:')
-        console.log(`${a*a}+`);
-        console.log(4*a);
+        console.log("Area",a*a+str);
+        console.log('Perimeter',4*a+" unit");
         break;
     case '2':
         console.log("RECTANCLE");
         var a = readlineSync.questionInt('Enter your L and B:');
         var b = readlineSync.questionInt('Enter your L and B:');
-        console.log(a*b)
-        console.log(2*(a+b))
+       
+        console.log("Area",a*b+(str))
+        console.log('Perimeter',2*(a+b)+(' unit'))
         break;
     case '3':
             console.log("TRAINGLE")
@@ -39,14 +41,14 @@ switch(num){
             var b = readlineSync.questionInt('Enter Breadth:');
             var c = readlineSync.questionInt('ENter Height:')
             var s = (1/2)*(a+b+c);
-            console.log(`${(s*(s-a)*(s-b)*(s-c))**(1/2)}`);
-            console.log(a+b+c);
+            console.log("Area",`${(s*(s-a)*(s-b)*(s-c))**(1/2)}`+str);
+            console.log('Perimeter',a+b+c+' unit');
             break;
     case '4':
             console.log("CIRCLE")
              var a = readlineSync.questionInt('Enter Radius:');
-          console.log(Math.PI*(a*a)+"units",square.sup());
-        console.log(2*Math.PI*(a*a))
+          console.log("Area",Math.PI*(a*a)+str);
+        console.log('Perimeter',2*Math.PI*(a*a)+' unit');
         break;
     }
 

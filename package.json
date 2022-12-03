@@ -1,7 +1,7 @@
 {
   "name": "practice",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is my repository for upload class and work assingment",
   "main": "8.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,5 +11,13 @@
   "license": "ISC",
   "dependencies": {
     "readline-sync": "^1.4.10"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdulquayyum871/CFI_B22_WORKS.git"
+  },
+  "bugs": {
+    "url": "https://github.com/abdulquayyum871/CFI_B22_WORKS/issues"
+  },
+  "homepage": "https://github.com/abdulquayyum871/CFI_B22_WORKS#readme"
 }
