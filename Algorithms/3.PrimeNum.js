@@ -3,11 +3,13 @@ var readlineSync = require('readline-sync');
 
 var n = readlineSync.questionInt("N")
 
-for (i=2;i<=n;i++){
-    if(n%2===1){
-        console.log("Number is prime")
-    }
-    else{
-        console.log("Not prime")
-    }
+if(n ==1){
+    console.log('Invalid')
+
 }
+for(i=2;i<=n;i++){
+    if(n%i==0){
+    console.log("Prime")
+}
+}
+console.log("Not prime")
