@@ -1,15 +1,18 @@
 //Weather the given input is prime number or not in javascript
 var readlineSync = require('readline-sync');
 
-var n = readlineSync.questionInt("N")
+var num = readlineSync.questionInt("ENter the number:");
 
-if(n ==1){
-    console.log('Invalid')
+var c = 0;
+
+for(var i=1;i<=num;i++){
+    if(num%i==0)
+    c++;
 
 }
-for(i=2;i<=n;i++){
-    if(n%i==0){
-    console.log("Prime")
-}
-}
-console.log("Not prime")
+if(c==2)
+console.log(`${num} is prime number`)
+else
+console.log(`${num} is not a prime number`)
+
+
