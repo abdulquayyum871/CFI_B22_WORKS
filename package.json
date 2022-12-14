@@ -19,5 +19,6 @@
   "bugs": {
     "url": "https://github.com/abdulquayyum871/CFI_B22_WORKS/issues"
   },
-  "homepage": "https://github.com/abdulquayyum871/CFI_B22_WORKS#readme"
+  "homepage": "https://github.com/abdulquayyum871/CFI_B22_WORKS#readme",
+  "devDependencies": {}
 }
