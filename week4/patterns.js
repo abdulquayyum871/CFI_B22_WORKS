@@ -31,3 +31,7 @@ for(i=8;i>=0;i =i-2){
 //     arr.push(i)
 // }
 // console.log(arr)
+
+var a =1;
+for(i=0;i<5;i++){
+    b = a + 
