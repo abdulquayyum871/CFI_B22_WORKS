@@ -10,4 +10,6 @@ for (var j =0; j<= 1000 ; j = j+2){
 for (var k =1; k<=1000; k =k*3){
     console.log(k);
 }
+```
+
 
