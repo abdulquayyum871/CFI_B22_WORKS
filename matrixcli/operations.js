@@ -26,7 +26,7 @@ const inputMatrix = () => {
     }
     return arr;
 };
-
+https://www.w3schools.com/xml/ajax_intro.asp
 const highlightDiag = (arr) => {
     if (arr.length != arr[0].length) {
         console.log("\nThis matrix does not have diagonals");
