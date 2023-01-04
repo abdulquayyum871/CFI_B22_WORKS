@@ -1,16 +1,11 @@
 import readlinesync from "readline-sync";
 import fs from "fs";
 import chalk from "chalk";
+import {readFile,writefile,createUsers} from "./usercreate.js"
 
-function createUsers() {
-  let Name = readlinesync.question("Enter Full Name: ");
-  while (!Name) {
-    Name = readlinesync.question("re-Enter Full Name: ");
-  }
-  let username = readlinesync.question("Enter Your user name:");
-  while (!username) {
-    username = readlinesync.question("Enter Your user name: ");
-  }
+
+async function userlogin() {
+
   let email = readlinesync.questionEMail("Enter Your Mail: ");
   while (!email) {
     email = readlinesync.questionEMail("Enter Your Mail: ");
@@ -22,46 +17,31 @@ function createUsers() {
     hideEchoBack: true,
   });
   while (!password || !(password.length >= 8)) {
-    password = readlinesync.question("Enter Your password: ", {
+    password = readlinesync.question("Re-Enter Your password: ", {
       hideEchoBack: true,
     });
   }
-  let confpassword = readlinesync.question(
-    "Enter Your Password for Confirmation:",
-    { hideEchoBack: true }
-  );
-  while (password != confpassword) {
-    console.log(chalk.red("Password Do Not Match"));
-    confpassword = readlinesync.question(
-      "Enter Your Password for Confirmation",
-      { hideEchoBack: true }
-    );
-  }
-  let filedata = readFile("data.json")
-  filedata = JSON.parse(filedata);
-  console.log(filedata)
+
+let filedata = readFile("../Databases/data.json")
+filedata = JSON.parse(filedata)
+
+let emailfound = filedata.find((ele=>{
+    ele.email != email
+}))
+if(!emailfound){
+throw("Unauthorized Access")
+}
+if(emailfound.password != password){
+    console.log("User not Registered")
+    let op = readlinesync.questionInt(chalk.greenBright("Enter 1 to make a user account"))
+    switch(op){
+        case 1:
+            createUsers()
+    }
+}else{
+    console.log(chalk.blue("User Registered Successfully"))
 }
 
-createUsers();
-
-let writefile = (filename, filedata) => {
-  return new Promise((resolve, reject) => {
-    fs.write((filename, filedata), (err) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve();
-      }
-    });
-  });
-};
-
-
-function readFile(fileName) {
-    return new Promise((resolve, reject) => {
-        fs.writeFile(fileName, (err, data) => {
-            if (err) reject(err);
-            else resolve(data);
-        })
-    })
 }
+
+userlogin()

@@ -1,8 +1,8 @@
 {
-  "name": "todo-cli",
+  "name": "practice",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "1.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,8 +11,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "chalk": "^5.2.0",
-    "fs": "^0.0.1-security",
-    "readline-sync": "^1.4.10"
+    "axios": "^1.2.2"
   }
 }

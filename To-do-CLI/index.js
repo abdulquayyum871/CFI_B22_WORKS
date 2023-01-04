@@ -21,6 +21,7 @@ function dislaymenu() {
     switch(options){
         case 4:
             console.log(c.redBright("Thank You for using Our CLI Application"))
+            process.exit()
             return
         case 1:
             console.log(c.blue("User Login"))
