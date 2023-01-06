@@ -1,47 +1,67 @@
 import readlinesync from "readline-sync";
 import fs from "fs";
-import chalk from "chalk";
-import {readFile,writefile,createUsers} from "./usercreate.js"
+import c from "chalk";
+import loading from "loading-cli";
+import { readFile, writefile, createUsers } from "./usercreate.js";
 
 
 async function userlogin() {
+  try {
 
-  let email = readlinesync.questionEMail("Enter Your Mail: ");
-  while (!email) {
-    email = readlinesync.questionEMail("Enter Your Mail: ");
-  }
+    console.clear()
+    console.log(
+      c.red("========================================================")
+    );
+    console.log(c.yellowBright.bold.italic("\t \t \t TO-DO CLI"));
   console.log(
-    chalk.red("Note: The password length should be minimum 8 letters")
+    c.red("========================================================")
   );
-  let password = readlinesync.question("Enter Your password: ", {
-    hideEchoBack: true,
-  });
-  while (!password || !(password.length >= 8)) {
-    password = readlinesync.question("Re-Enter Your password: ", {
+  console.log(c.green("\t \t \t USER LOGIN "));
+  console.log(
+    c.red("========================================================")
+  );
+    let email = readlinesync.questionEMail("Enter Your Mail: ");
+    while (!email) {
+      email = readlinesync.questionEMail("Enter Your Mail: ");
+    }
+    console.log(
+      c.red("Note: The password length should be minimum 8 letters")
+    );
+    let password = readlinesync.question("Enter Your password: ", {
       hideEchoBack: true,
     });
-  }
 
-let filedata = readFile("../Databases/data.json")
-filedata = JSON.parse(filedata)
+    let fileData = await readFile("data.json");
+    fileData = JSON.parse(fileData);
 
-let emailfound = filedata.find((ele=>{
-    ele.email != email
-}))
-if(!emailfound){
-throw("Unauthorized Access")
-}
-if(emailfound.password != password){
-    console.log("User not Registered")
-    let op = readlinesync.questionInt(chalk.greenBright("Enter 1 to make a user account"))
-    switch(op){
-        case 1:
-            createUsers()
+    //Checking if User Exists
+    let emailFound = fileData.find((ele) => ele.email == email);
+    let passFound =  fileData.find((ele) => ele.password == password);
+    if (emailFound != email && passFound!=password) {
+        console.log("Unauthorised Access");
+        let shouldcont = readlinesync.question(
+          "If you want to make an account then proceed and press(y/n)"
+        );
+        if (
+          shouldcont == "Y" ||
+          shouldcont == "y" ||
+          shouldcont == "Yes" ||
+          shouldcont == "yes"
+        ) {
+          loading("Redirecting You to User Signup").start();
+          setTimeout(() => {
+            console.clear();
+            console.log(c.green("\n User ID Creation\n"));
+            createUsers();
+          }, 3000);
+          return;
     }
-}else{
-    console.log(chalk.blue("User Registered Successfully"))
+   
+    }else
+    console.log("User Signed in Successfully")
+} catch (error) {
+    console.error(error);
+}
 }
 
-}
-
-userlogin()
+export default userlogin;
