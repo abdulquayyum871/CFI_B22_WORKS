@@ -1,22 +1,25 @@
 import express from "express";
+import serveIndex from "serve-index";
+
+
 const app = express();
-let port = 6000;
+const port = 6001;
 
-app.use(express.json());
+app.get("/",(req,res)=>{
+    res.send("<h1>This is the Root </h1>")
+    // res.redirect("/public")
+})
 
-// let a=()=>{app.get("/", (req, res) => {
-//     res.send("Hello World");
-//     console.log("Hello server started at port 1 ");
-//   });} 
+app.use("/evp",(req,res)=>{
+res.send("Edventure park")});
 
-app.get("/api/signup", (a,req, res) => {
-  res.send("Sign up server connection");
-  console.log("sign up server established");
-});
-app.use("/",express.static("edventurepark.com"));
+app.post("/evp/enigma",(req,res){
+    
+})
 
-app.listen(port, () => {
-  console.log(`Server established at ${port}`);
-});
+app.use("/public",serveIndex("public",{icons:true}),express.static("public"));
 
 
+app.listen(port,()=>{
+    console.log("Server Started at Port : ",port);
+})
